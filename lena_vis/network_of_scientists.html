@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sunburst - Sunburst of a Directory Tree</title>
+
+<!-- CSS Files -->
+<link type="text/css" href="base.css" rel="stylesheet" />
+<link type="text/css" href="Sunburst.css" rel="stylesheet" />
+
+<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="jquery.js"></script>
+<!-- <script language="javascript" type="text/javascript" src="jquery.mobile.js"></script> -->
+<!-- JIT Library File -->
+<script language="javascript" type="text/javascript" src="Jit/jit-yc.js"></script>
+
+
+<script language="javascript" type="text/javascript" src="network_of_scientists.js"></script>
+<script language="javascript" type="text/javascript" src="sunburst.js"></script>
+<script language="javascript" type="text/javascript" src="tree_anim.js"></script>
+<script language="javascript" type="text/javascript" src="node_types.js"></script>
+<script language="javascript" type="text/javascript" src="tree_map.js"></script>
+<script language="javascript" type="text/javascript" src="linked_circle.js"></script>
+<script type="text/javascript">
+//get the raw data 
+
+$(document).ready(function(){
+    //read from sparql json
+	//var me = "http://vivo.ufl.edu/individual/n744495298";
+	//$.getJSON('person_links_sparql.json', function (json) {
+	//		transform_sparql(json, me);
+	//});
+
+	//read from organized daat strucure
+	var me = "http://xxxxx/helena";
+	  $.getJSON('example.json', function(json) {
+			transform(json, me);
+      });
+});
+
+
+	
+</script>
+
+</head>
+
+<body>
+
+  
+<div id="center-container">
+    <div id="infovis">
+	</div>    
+</div>   
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+{ 
+	"http://xxxxx/helena":
+	{
+		"id": "http://xxxxx/",
+		"firstname": "Helena",
+		"lastname": "Deus",
+		"coi": [
+			{
+			"id": "semantic_web",
+			"label": "semantic web",
+			"url": ""
+			},
+			{
+			"id": "linked_data",
+			"label": "linked data",
+			"url": ""
+			},	
+			{
+			"id": "systems_biology",
+			"label": "systems biology",
+			"url": ""
+			},
+			{
+			"id": "bioinformatics",
+			"label": "bioinformatics",
+			"url": ""
+			}	
+		],
+		"publications": [
+			{
+			"id": "",
+			"title": "paper1",
+			"abstract": ""
+			}
+		],
+		"links": [
+			
+			{
+				"id": "http://xxxxx/jits",
+				"firstname": "Jits",
+				"lastname": "Bhagat"
+			},
+			{
+				"id": "http://xxxxx/andra",
+				"firstname": "Andra",
+				"lastname": ""
+			},
+			{
+				"id": "http://xxxxx/kees",
+				"firstname": "Kees",
+				"lastname": "Burger"
+			},
+			{
+				"id": "http://xxxxx/alvaro",
+				"firstname": "Alvaro",
+				"lastname": "Graves"
+			}
+		]
+	},
+	"http://xxxxx/jits":
+	{
+		"id": "http://xxxxx/jits",
+		"firstname": "Jits",
+		"lastname": "Bhagat",
+		"coi": [
+			{
+			"id": "semantic_web",
+			"label": "semantic web",
+			"url": ""
+			},
+			{
+			"id": "workflows",
+			"label": "workflows",
+			"url": ""
+			},	
+			{
+			"id": "systems_biology",
+			"label": "systems biology",
+			"url": ""
+			},
+			{
+			"id": "bioinformatics",
+			"label": "bioinformatics",
+			"url": ""
+			}	
+		]
+	}
+}

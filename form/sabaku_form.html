@@ -28,8 +28,9 @@
 	<link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
  </head>
 <script type="text/javascript">
-<!--
+
 	//start by assembling the query that will fetch data from mendeley
+	var consumerKey = "dcee862fefe74b9491fff208d409bff604decaf3b";
 	var publications = {};
 	var fetch = function (){
 		
@@ -43,7 +44,7 @@
 				//also add events to the boxes
 				$('.title').keyup(function(){
 					
-					var consumerKey = "dcee862fefe74b9491fff208d409bff604decaf3b";
+					
 					var title = '"'+$(this).val()+'"';
 					var queryURL = escape("http://api.mendeley.com/oapi/documents/search/title:"+title+"/?consumer_key="+consumerKey);
 					
@@ -56,32 +57,45 @@
 						}
 						
 						$('.title').autocomplete({
-							source: publications.titles
+							source: publications.titles,
+							select: function (event, ui) {
+								for (var i=0; i<publications.titles.length; i++) {
+									if(publications.titles[i]==ui.item.value){
+										var uuid = publications.uuid[i];
+										break;
+										
+									}
+								}
+								
+								details(uuid);
+								
+								
+							}
 						});
 					}, 'json');
-
-					
-					
-					
+	
 				})
-		
-		
-		
+		}
 
-		
-		//jQuery.get(queryURL, function (data){
-				//assemble a list of sources to create the list; create at the same time the object to index the tuples
-		//		var sources = {};
-		//		var list = [];
-				//Nota: se houver comidas com mais de 1 agente activo, isto não funciona como devia.. fica para depois
-		//		for (var i=0;i<data.length;i++)
-		//		{
-					
-		//		}
-				
+	var details = function (uuid) {
+		var detailsURI = escape("http://api.mendeley.com/oapi/documents/details/"+uuid+"/?consumer_key="+consumerKey);
+		console.log(detailsURI);					
+		$.getJSON("http://vmdhcls04.deri.ie/chickenWrap.php?url="+detailsURI+"&callback=?", function (data) {
+			//get the good stuff, fill out some forms
+			$('.abstract').val(data.abstract);
+			
+			//authors
+			for (var i=1; i<data.authors.length; i++) {
+				topic.addNewLine('authors');
+			}
+			for (var i=0; i<$('.authors').length; i++) {
+				$($('.authors')[i]).val(data.authors[i].forename+" "+data.authors[i].surname)
+			}
 
-		//	}
-		//)
+
+			
+			
+		})
 	}
 //-->
 </script>

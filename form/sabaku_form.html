@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Sabaku Submission Form</title>
+ 
+<!-- Javascript -->
+  <script type="text/javascript" src="js/jquerymin.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+
+  <!-- THIS IS THE MOST IMPORTANT SCRIPT -->
+  <script type="text/javascript" src="js/questions.js"></script>
+  <!-- THIS WAS THE MOST IMPORTANT SCRIPT -->
+ 
+  <script type="text/javascript" src="js/topics.js"></script>
+  
+  <!-- Style -->
+  <!-- Framework CSS -->
+    <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	
+	<!-- More styles -->
+	<link rel="stylesheet" href="js/jquery_ui/development-bundle/themes/base/jquery.ui.all.css">
+    <link rel="stylesheet" href="js/jquery_ui/development-bundle/demos.css">
+	<link rel="stylesheet" href="css/pp.css">
+  	<link type='text/css' href='css/stylesheet.css' rel='stylesheet' media='screen' />
+	<link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
+ </head>
+<script type="text/javascript">
+<!--
+	//start by assembling the query that will fetch data from mendeley
+	var publications = {};
+	var fetch = function (){
+		
+		//use the list to populate the interface and then assemble it
+				
+				//kick it!
+				topic.assembleInterface();
+				$('#savebutton').button();
+				$('#radio').buttonset();
+
+				//also add events to the boxes
+				$('.title').keyup(function(){
+					
+					var consumerKey = "dcee862fefe74b9491fff208d409bff604decaf3b";
+					var title = '"'+$(this).val()+'"';
+					var queryURL = escape("http://api.mendeley.com/oapi/documents/search/title:"+title+"/?consumer_key="+consumerKey);
+					
+					
+					publications.titles = [];publications.uuid=[];
+					$.getJSON("http://vmdhcls04.deri.ie/chickenWrap.php?url="+queryURL+"&callback=?", function (data) {
+						for (var i=0; i<data.documents.length; i++) {
+							publications.titles.push(data.documents[i].title);
+							publications.uuid.push(data.documents[i].uuid);
+						}
+						
+						$('.title').autocomplete({
+							source: publications.titles
+						});
+					}, 'json');
+
+					
+					
+					
+				})
+		
+		
+		
+
+		
+		//jQuery.get(queryURL, function (data){
+				//assemble a list of sources to create the list; create at the same time the object to index the tuples
+		//		var sources = {};
+		//		var list = [];
+				//Nota: se houver comidas com mais de 1 agente activo, isto não funciona como devia.. fica para depois
+		//		for (var i=0;i<data.length;i++)
+		//		{
+					
+		//		}
+				
+
+		//	}
+		//)
+	}
+//-->
+</script>
+<body onload="fetch()">
+<div class="container">
+      <hr>
+	  <div class="span-24 last">
+
+        
+
+          <fieldset id="questions">
+            <legend>What can you tell us about your submission?</legend>
+            
+
+			<p class="ui-widget" id="form_ending">
+              <label for="title">Can we share your submission on Mendeley?</label><br>
+              <div id="radio">
+				<input type="radio" name="share" id="shareY" value="yes" checked><label for="shareY">Sure</label>
+				<input type="radio" name="share" id="shareN" value="no"><label for="shareN">No</label>
+			  </div>
+			</p>
+
+            
+
+          </fieldset>
+      
+
+      </div>
+ </body>
+</html>

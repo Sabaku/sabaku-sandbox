@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="css/smoothness/jquery-ui-1.8.13.custom.css" rel="Stylesheet" />	
+<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+  <style>
+
+  p { margin:0; color:blue; }
+  div,p { margin-left:10px; }
+  span { color:red; }
+  #sabakuPasteObject {
+	border-width: .2em; 
+	border-style: dotted; 
+	border-color: #900
+}
+  </style>
+</head>
+<body>
+  <img src = "sabakuLogo.png" width="300">
+
+
+  <div id="SabakuForm">
+  <form action="processData.php" method="post">
+    <center><div id="inputForm">
+	<table>
+      <tr><td><label>Title</label></td><td><input type="text" class="title" name="title" size="200"/></td></tr>
+	  <tr><td><label>Authors</label></td><td><input type="text" class="authors" name="authors" size="200"/></td></tr>
+      <tr><td><label>Affiliation</label></td><td><input type="text" class="affiliation" name="affiliation" size="200"/></td></tr>
+      <tr><td><label>Abstract</label></td><td><textarea class="abstract" name = "abstract" cols="140" rows="20"></textarea></td></tr>
+	  <tr><td><label>Event</label></td><td><input type="text" class="conference" name="conference" size="200"/></td></tr>
+	  
+	  <script>
+		$(function() {
+			$( "#datepicker" ).datepicker();
+			
+		});
+		</script>
+
+
+	<tr><td><label>Date</label></td><td> <input type="text" class="eventdate" name = "eventdate" id="datepicker"></td></tr>
+	
+	  <tr><td><label>URL</label></td><td><input type="text" class="url" name= "url" size="200"/></td></tr>
+	</table>
+	<center>
+	
+
+
+
+      <input type="submit" /></center>
+     </div>
+    </div>
+  </form>
+  <div id="sabakuPasteObject"><span><img src = "sabakuLogo.png" width="100"></span></div>
+
+
+</body>
+</html>
+

@@ -1,6 +1,6 @@
 <?php
    //var_dump($_POST);
-    $link = mysql_connect('127.0.0.1', 'sabakuor', '3kkdzoe#');
+    $link = mysql_connect('127.0.0.1', '', '');
 	if (!$link) {
 	    die('Could not connect: ' . mysql_error());
 	}
